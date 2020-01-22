@@ -35,21 +35,25 @@ public class Formulario extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    // Recogemos el valor de los edit text
                     lat = Double.parseDouble(etLat.getText().toString());
                     longi = Double.parseDouble(etLong.getText().toString());
 
+                    // Comprobamos que se ajusten a la realidad
                     if (lat <= -90 || lat >= 90){
                         Toast.makeText(v.getContext(), "La latitud debe de estar entre -90 y 90", Toast.LENGTH_SHORT).show();
                     }else if (longi <= -180 || longi >= 180){
                         Toast.makeText(v.getContext(), "La longitud debe de estar entre -180 y 180", Toast.LENGTH_SHORT).show();
                     }
                     else {
+                        // En caso de poner datos correctos, pasamos al mapa
                         Intent intent2 = new Intent(v.getContext(), MainActivity.class);
                         intent2.putExtra("latitud", etLat.getText().toString());
                         intent2.putExtra("longitud", etLong.getText().toString());
                         v.getContext().startActivity(intent2);
                     }
                 }catch (NumberFormatException e){
+                    // Controlamos tambíen que se rellenen los dos campos
                     Toast.makeText(v.getContext(), "Inserta los valores", Toast.LENGTH_SHORT).show();
                 }
 

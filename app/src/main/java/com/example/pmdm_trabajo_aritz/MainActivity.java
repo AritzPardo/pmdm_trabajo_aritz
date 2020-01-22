@@ -30,13 +30,13 @@ public class MainActivity extends AppCompatActivity {
         Mapbox.getInstance(this, getString(R.string.access_token));
 
         // Este layout contiene el MapView en el XML y necesita ser
-        // llamado después del token de acceso.
+        // llamado DESPUÉS del token de acceso.
         setContentView(R.layout.activity_main);
 
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
 
-        // Recogemos los valores que el usuario ha escogido
+        // Recogemos los valores que el usuario ha escogido a través del intent
         Intent intent = getIntent();
         final String latitud = intent.getStringExtra("latitud");
         final String longitud = intent.getStringExtra("longitud");

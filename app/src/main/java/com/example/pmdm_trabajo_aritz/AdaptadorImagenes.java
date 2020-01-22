@@ -18,7 +18,7 @@ public class AdaptadorImagenes extends RecyclerView.Adapter<AdaptadorImagenes.Vi
     private List<Resultado> listaResultado;
     private MediaPlayer mediaplayer;
 
-
+    // Constructor del adaptador
     public AdaptadorImagenes(List<Resultado> listaResultado) {
         this.listaResultado = listaResultado;
     }
@@ -40,6 +40,7 @@ public class AdaptadorImagenes extends RecyclerView.Adapter<AdaptadorImagenes.Vi
         holder.imgRecycler.setImageResource(resID);
         holder.nombre.setText(nombre);
 
+        // Aquí programamos el click del elemento del recyclerview
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

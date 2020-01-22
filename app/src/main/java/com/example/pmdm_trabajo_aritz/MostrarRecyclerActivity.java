@@ -23,6 +23,7 @@ public class MostrarRecyclerActivity extends AppCompatActivity {
 
         reyclerViewTitulos = (RecyclerView) findViewById(R.id.recyclerViewMostrar);
 
+        // Creamos los objetos de nuestra clase, con el nombre y su imagen
         Resultado Europa_Este = new Resultado("Parque Europa desde el este", "foto1");
         Resultado Europa_SudEste = new Resultado("Parque Europa desde el sudeste", "foto2");
         Resultado Europa_Sur = new Resultado("Parque Europa desde el sur", "foto3");
@@ -30,6 +31,7 @@ public class MostrarRecyclerActivity extends AppCompatActivity {
         Resultado Fuente = new Resultado("El insituto, fuente de gozo", "foto5");
         Resultado Arbusto = new Resultado("Arbustos grandes.", "foto6");
 
+        // Añadimos los objetos al ArrayList
         listaResultado.add(Europa_Este);
         listaResultado.add(Europa_SudEste);
         listaResultado.add(Europa_Sur);
@@ -37,14 +39,14 @@ public class MostrarRecyclerActivity extends AppCompatActivity {
         listaResultado.add(Fuente);
         listaResultado.add(Arbusto);
 
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
+        // Este ajuste mejora la performance, solo si el
+        // contenido del recycler no altera su tamaño
         reyclerViewTitulos.setHasFixedSize(true);
 
         // Colocamos 3 columnas en el recyclerView
         reyclerViewTitulos.setLayoutManager (new GridLayoutManager(this, 3));
 
-        // specify an adapter with the list to show
+        // Especificamos el adaptador para el recycler
         adaptadorRecycler = new AdaptadorImagenes(listaResultado);
         reyclerViewTitulos.setAdapter(adaptadorRecycler);
 
