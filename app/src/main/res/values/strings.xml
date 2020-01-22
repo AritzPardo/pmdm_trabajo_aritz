@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">pmdm_trabajo_aritz</string>
+    <string name="access_token">pk.eyJ1IjoienVnYXoiLCJhIjoiY2sycTB1Y3UwMDllNzNscDduMXJvYjB5ZiJ9.VYL3D32qzKbtnA8TWnFA3g</string>
+
+    <!-- Formulario -->
+    <string name="formulario_txtLat">Latitud: </string>
+    <string name="formulario_txtLong">Longitud: </string>
+    <string name="formulario_btnSiguiente">Siguiente</string>
+    <!-- -->
+</resources>
