@@ -3,12 +3,10 @@ package com.example.pmdm_trabajo_aritz;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
-
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.annotations.Marker;
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
+import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
@@ -19,9 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-/**
- * The most basic example of adding a map to an activity.
- */
 public class MainActivity extends AppCompatActivity {
 
     private MapView mapView;
@@ -30,15 +25,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Mapbox access token is configured here. This needs to be called either in your application
-        // object or in the same activity which contains the mapview.
+        // El token de acceso se configura aquí. Necesita ser llamado
+        // en el activity que contiene el mapview (este)
         Mapbox.getInstance(this, getString(R.string.access_token));
 
-        // This contains the MapView in XML and needs to be called after the access token is configured.
+        // Este layout contiene el MapView en el XML y necesita ser
+        // llamado después del token de acceso.
         setContentView(R.layout.activity_main);
 
-        // Ponemos los valores que el usuario ha escogido
+        mapView = findViewById(R.id.mapView);
+        mapView.onCreate(savedInstanceState);
+
+        // Recogemos los valores que el usuario ha escogido
         Intent intent = getIntent();
         final String latitud = intent.getStringExtra("latitud");
         final String longitud = intent.getStringExtra("longitud");
@@ -49,27 +47,33 @@ public class MainActivity extends AppCompatActivity {
         double longi = Double.parseDouble(latlong[1]);
         final LatLng location = new LatLng(lat, longi);
 
-        mapView = findViewById(R.id.mapView);
-        mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(@NonNull final MapboxMap mapboxMap) {
                 mapboxMap.setStyle(Style.MAPBOX_STREETS, new Style.OnStyleLoaded() {
                     @Override
                     public void onStyleLoaded(@NonNull Style style) {
+                        // Creamos una posición de camara para centrar la visión del mapa en el marker
+                        CameraPosition position = new CameraPosition.Builder()
+                                .target(new LatLng(location))
+                                .zoom(5)
+                                .tilt(20)
+                                .build();
 
+                        // Añadimos el marker con la localización dada por el usuario
                         mapboxMap.addMarker(new MarkerOptions().position(location).title("Punto Escogido"));
+                        mapboxMap.setCameraPosition(position);
 
-                        //Control de Juego Activo.
+                        // El metodo al clickar en el marker
                         mapboxMap.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
                             @Override
                             public boolean onMarkerClick(@NonNull Marker marker) {
-
+                                // El sonido
                                 mediaplayer = MediaPlayer.create(MainActivity.this, R.raw.misc021);
                                 mediaplayer.start();
 
-                                Intent intent = new Intent(getApplicationContext(), MostrarImagenes.class);
-                                getApplicationContext().startActivity(intent);
+                                Intent intent = new Intent(getApplicationContext(), MostrarRecyclerActivity.class);
+                                startActivity(intent);
                                 return false;
                             }
                         });

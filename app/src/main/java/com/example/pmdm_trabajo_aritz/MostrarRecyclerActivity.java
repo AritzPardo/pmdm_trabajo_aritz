@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MostrarImagenes extends AppCompatActivity {
+public class MostrarRecyclerActivity extends AppCompatActivity {
 
     RecyclerView reyclerViewTitulos;
     AdaptadorImagenes adaptadorRecycler;
@@ -26,7 +26,7 @@ public class MostrarImagenes extends AppCompatActivity {
         Resultado Europa_Este = new Resultado("Parque Europa desde el este", "foto1");
         Resultado Europa_SudEste = new Resultado("Parque Europa desde el sudeste", "foto2");
         Resultado Europa_Sur = new Resultado("Parque Europa desde el sur", "foto3");
-        Resultado Europa_Rotonda = new Resultado("Parque Europa desde el rotonda", "foto4");
+        Resultado Europa_Rotonda = new Resultado("Parque Europa desde la rotonda", "foto4");
         Resultado Fuente = new Resultado("El insituto, fuente de gozo", "foto5");
         Resultado Arbusto = new Resultado("Arbustos grandes.", "foto6");
 

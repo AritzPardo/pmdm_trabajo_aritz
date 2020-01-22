@@ -1,96 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Formulario">
+    android:orientation="vertical"
+    tools:context=".Formulario"
+    android:weightSum="3"
+    android:background="@color/colorFondo">
 
 
-    <TextView
-        android:id="@+id/txtLat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="@string/formulario_txtLat"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/guiahorizontal_up"
-        app:layout_constraintEnd_toStartOf="@+id/guiavertical_der"
-        app:layout_constraintStart_toEndOf="@+id/guiavertical_izq"
-        />
-
-    <EditText
-        android:id="@+id/etLat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/guiahorizontal_up"
-        app:layout_constraintEnd_toStartOf="@+id/guiavertical_der"
-        app:layout_constraintStart_toEndOf="@+id/txtLat"/>
-
-    <TextView
-        android:id="@+id/txtLong"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="@string/formulario_txtLong"
-        app:layout_constraintTop_toBottomOf="@+id/guiahorizontal_up"
-        app:layout_constraintBottom_toTopOf="@+id/guiahorizontal_down"
-        app:layout_constraintEnd_toStartOf="@+id/guiavertical_der"
-        app:layout_constraintStart_toEndOf="@+id/guiavertical_izq"
-        />
-
-    <EditText
-        android:id="@+id/etLong"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        app:layout_constraintTop_toBottomOf="@+id/guiahorizontal_up"
-        app:layout_constraintBottom_toTopOf="@+id/guiahorizontal_down"
-        app:layout_constraintEnd_toStartOf="@+id/guiavertical_der"
-        app:layout_constraintStart_toEndOf="@+id/txtLong"/>
-
-
-    <Button
-        android:id="@+id/btnSiguiente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:text="@string/formulario_btnSiguiente"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/guiahorizontal_up"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/guiavertical_der"
-        app:layout_constraintStart_toEndOf="@id/guiavertical_izq"/>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guiahorizontal_up"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65" />
+        android:layout_weight="1"
+        android:weightSum="2"
+        android:gravity="center">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guiahorizontal_down"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgLatitud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/latitud" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:weightSum="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtLat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_marginTop="80sp"
+                android:text="@string/formulario_txtLat"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/etLat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="100sp"
+                android:layout_marginStart="20sp"
+                android:layout_marginEnd="20sp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.41" />
+        android:layout_weight="1"
+        android:weightSum="2"
+        android:gravity="center">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/guiavertical_izq"
-        app:layout_constraintGuide_percent="0.2"
-        android:orientation="vertical"/>
-    <androidx.constraintlayout.widget.Guideline
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/guiavertical_der"
-        app:layout_constraintGuide_percent="0.8"
-        android:orientation="vertical"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/imgLongitud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/longitud" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:weightSum="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtLong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="80sp"
+                android:layout_weight="1"
+                android:text="@string/formulario_txtLong"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/etLong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="100sp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginStart="20sp"
+                android:layout_marginEnd="20sp"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnSiguiente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="top"
+            android:layout_marginBottom="10sp"
+            android:padding="5sp"
+            android:text="@string/formulario_btnSiguiente"
+            android:textSize="20sp"
+            android:background="@color/colorAccent"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -34,23 +34,23 @@ public class AdaptadorImagenes extends RecyclerView.Adapter<AdaptadorImagenes.Vi
     // Aqui ponemos los elementos que se muestran en pantalla
     @Override
     public void onBindViewHolder(final AdaptadorImagenes.ViewHolder holder, final int position) {
-        final String name = listaResultado.get(position).getNombre();
-        final String imgTitulo = listaResultado.get(position).getNombreImagen();
-        int resID = holder.itemView.getResources().getIdentifier(imgTitulo , "drawable", holder.itemView.getContext().getPackageName());
+        final String nombre = listaResultado.get(position).getNombre();
+        final String imgRecycler = listaResultado.get(position).getNombreImagen();
+        int resID = holder.itemView.getResources().getIdentifier(imgRecycler , "drawable", holder.itemView.getContext().getPackageName());
         holder.imgRecycler.setImageResource(resID);
-        holder.name.setText(name);
+        holder.nombre.setText(nombre);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(view.getContext(), "Recycle Click: " + name, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(view.getContext(), "Recycle Click: " + nombre, Toast.LENGTH_SHORT).show();
 
                 mediaplayer = MediaPlayer.create(view.getContext(), R.raw.misc021);
                 mediaplayer.start();
 
                 Intent intent = new Intent(view.getContext(), UltimaPantalla.class);
-                intent.putExtra("nombre", name);
-                intent.putExtra("nombreImagen", imgTitulo);
+                intent.putExtra("nombre", nombre);
+                intent.putExtra("nombreImagen", imgRecycler);
                 view.getContext().startActivity(intent);
             }
         });
@@ -64,12 +64,12 @@ public class AdaptadorImagenes extends RecyclerView.Adapter<AdaptadorImagenes.Vi
     // Esto es necesario
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // Aqui tambien ponemos los elementos del elemento selector
-        private TextView name;
+        private TextView nombre;
         private ImageView imgRecycler;
         public ViewHolder(View v) {
             super(v);
             imgRecycler = v.findViewById(R.id.imgImagene);
-            name = (TextView) v.findViewById(R.id.txtRecyclerText);
+            nombre = (TextView) v.findViewById(R.id.txtRecyclerText);
         }
     }
 }
